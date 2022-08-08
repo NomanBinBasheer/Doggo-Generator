@@ -22,6 +22,7 @@
 /*******************************************/
 
 body {
+  padding: 1.5rem 0 0 0;
 
 }
 
@@ -29,13 +30,40 @@ body {
 /******************************************
 /* LAYOUT
 /*******************************************/
-header {
-
+h1{
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+main{
+  width: 50%;
+  margin: 0 auto;
+  border: 2px solid red;
+}
+#dogName{
+  display: flex;
+  justify-content: center;
+}
+img{
+  width: 300px;
+  height: 300px;
+}
+.breedChoose, .imgContainer{
+  display: flex;
+  justify-content: center;
+}
+.firstTwo{
+  display: inline;
+}
+.characteristics h4{
+  display: flex;
+  justify-content: center;
+}
+.characteristics li{
+  list-style: none;
 }
 
-footer {
 
-}
 
 /******************************************
 /* ADDITIONAL STYLES
