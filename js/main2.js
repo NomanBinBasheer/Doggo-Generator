@@ -2,10 +2,6 @@ const breedsURL = 'https://dog.ceo/api/breeds/list/all'
 
 const selectTag = document.querySelector('.breeds')
 
-const imgContainer = document.querySelector('#imgCon')
-
-
-
 fetch(breedsURL)
     .then(res => {
       return  res.json()
@@ -18,7 +14,7 @@ fetch(breedsURL)
         for (let i = 0; i < breedsArray.length; i++){     
             const option = document.createElement('option')
             option.value = breedsArray[i]
-            option.innerText = breedsArray[i].charAt(0).toUpperCase() + breedsArray[i].slice(1)
+            option.innerText = breedsArray[i]
             selectTag.appendChild(option)
         }
 
@@ -30,13 +26,21 @@ fetch(breedsURL)
 
         getDogImg(url)
         doggoInfo.assignAge()
+
         doggoInfo.assignMF()
-        // doggoInfo.assignName()
         doggoInfo.assignFunFact()
         doggoInfo.assignLikes()
+        
         doggoInfo.assignDislikes()
 
+        doggoInfo.assignName()
+        
+    
        
+        
+        
+       
+        
         
 
 
@@ -49,11 +53,9 @@ fetch(breedsURL)
             return res.json()
         })
         .then(data => {
-
-            imgContainer.style.backgroundImage = `url(${data.message})`
-            imgContainer.style.backgroundSize = 'cover'
-            imgContainer.style.backgroundPosition  = 'center'; 
-            imgContainer.style.backgroundClip     =  '  -box'
+            
+            img.src = data.message
+            console.log('image')
         })
     }
 
@@ -82,7 +84,7 @@ fetch(breedsURL)
             else{
                 this.MF = 'Female'
                 this.assignName(this.fNames)
-                console.log('female')
+                
             }
             console.log('MaleFemale')
             document.querySelector('#maleFemale').innerHTML = `${this.MF}`
@@ -116,18 +118,21 @@ fetch(breedsURL)
      assignLikes(){
         this.likes = this.yatesShuffle(this.likesList).slice(0, 2)
         document.querySelector('#likes').innerHTML = `${this.likes[0]}, ${this.likes[1]}`
+        console.log('Likes')
 
      },
 
      assignDislikes(){
         this.dislikes = this.yatesShuffle(this.dislikesList).slice(0, 2)
         document.querySelector('#dislikes').innerHTML = `${this.dislikes[0]}, ${this.dislikes[1]}`
+        console.log('Dislikes')
 
      },
 
      assignFunFact(){
         this.fact = this.factList[Math.floor(Math.random() * this.factList.length)]
         document.querySelector('#funFact').innerHTML = `${this.fact}`
+        console.log('Fun Fact')
 
      }
 
